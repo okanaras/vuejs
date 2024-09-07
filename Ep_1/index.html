@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>Vue JS Ep_1</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+</head>
+<body>
+
+<div id="app">
+    <p>
+        <input type="text" v-model="greeting">
+    </p>
+
+    <p>
+        {{ greeting }} {{ greeting.length === 0 ? "Bir deger giriniz" : ` : length (${greeting.length})`}}
+    </p>
+</div>
+
+<script>
+    Vue.createApp({
+        data() {
+            return {
+                greeting: "Hello World"
+            };
+        },
+        // mounted sayfa acilir acilmaz ilk calisir
+        mounted() {
+            setTimeout(() => {
+                this.greeting = "Changed!";
+            }, 3000);
+        }
+    }).mount("#app");
+</script>
+</body>
+</html>

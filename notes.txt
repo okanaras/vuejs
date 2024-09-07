@@ -1,0 +1,37 @@
+ Vue 3 notlari
+
+ Episode 1
+ 1- v-model="anyName" : herhangi bir degere bagliyoruz.
+
+ 2- data()
+    {
+        return {
+            greeting: "Hello World"
+        };
+    }, : ?degiskenlerimizi burada belirliyoruz
+
+ 3- mounted()
+    {
+        setTimeout(() => {
+            this.greeting = "Changed!";
+        }, 3000);
+    } : Mounted sayfa acilir acilmaz ?calisicak
+
+ 4- <p>
+        {{ greeting }} {{ greeting.length === 0 ? "Bir deger giriniz" : ` : length (${greeting.length})`}}
+    </p> : seklinde htmlde kullaniriz
+
+
+ Episode 2
+
+ 5- methods:
+    {
+        changeColor() {
+            this.active = !this.active;
+        }
+    } : methodlar methods arasina yazilir
+
+ 6- v-bind:class = :class, v-on:click = @click
+
+ 7- <button :class="active ? 'text-red' : 'text-green'" @click="changeColor">Click me</button> : ornek kullanimi
+

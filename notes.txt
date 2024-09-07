@@ -76,28 +76,59 @@
 
  Episode 4
 
-    12- let app = {
+ 12- let app = {
+          components: {
+              'app-button': {
+                  template: `
+                    <button
+                        class="bg-gray-200 hover:bg-gray-400 hover:text-white border rounded px-5 py-2 disabled:cursor-not-allowed"
+                        :disabled="processing">
+                      <slot/>
+                    </button>
+                  `,
+
+                  data() {
+                      return {
+                          processing: true
+                      };
+                  }
+              },
+
+          }
+      };
+
+      Vue.createApp(app).mount("#app"); : component tanimi, template icerisi dondurulur. Slot cagrildiginda dinamiklesitir
+
+ 13- <app-button>Submit</app-button> : component cagirimi, Submit = <slot/>
+
+
+ Episode 5
+
+ 14- export default {
+         template: `
+           <button
+               class="bg-gray-200 hover:bg-gray-400 hover:text-white border rounded px-5 py-2 disabled:cursor-not-allowed"
+               :disabled="processing">
+             <slot/>
+           </button>
+         `,
+
+         data() {
+             return {
+                 processing: true
+             };
+         }
+     } : externel componenti olusturduk
+
+ 15- <script type="module">
+         import AppButton from "./src/components/AppButton.js";
+
+         let app = {
              components: {
-                 'app-button': {
-                     template: `
-                       <button
-                           class="bg-gray-200 hover:bg-gray-400 hover:text-white border rounded px-5 py-2 disabled:cursor-not-allowed"
-                           :disabled="processing">
-                         <slot/>
-                       </button>
-                     `,
-
-                     data() {
-                         return {
-                             processing: true
-                         };
-                     }
-                 },
-
+                 'app-button': AppButton
              }
          };
 
-         Vue.createApp(app).mount("#app"); : component tanimi, template icerisi dondurulur. Slot cagrildiginda dinamiklesitir
-
-    13- <app-button>Submit</app-button> : component cagirimi, Submit = <slot/>
+         Vue.createApp(app).mount("#app");
+     </script> : type module dedik ve import ettik. components bolumunde importu atadik
 

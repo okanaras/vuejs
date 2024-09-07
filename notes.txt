@@ -132,3 +132,30 @@
          Vue.createApp(app).mount("#app");
      </script> : type module dedik ve import ettik. components bolumunde importu atadik
 
+
+ Episode 6
+
+ 16- props: {
+         type: {
+             type: String,
+             default: 'primary'
+         },
+         processing: {
+             type: Boolean,
+             default: false
+         }
+     } : prop u bu sekilde tanimlayabilirz type ve dault degerleri verilebilinir.
+
+ 17- <button
+           :class="{
+             'hover:text-white border rounded px-5 py-2 disabled:cursor-not-allowed':true,
+             'bg-blue-600 hover:bg-blue-700': type === 'primary',
+             'bg-purple-200 hover:bg-purple-400': type === 'secondary',
+             'bg-gray-200 hover:bg-gray-400': type === 'muted',
+             'is-loading' : processing
+           }"
+           :disabled="processing">
+         <slot/>
+     </button> : Burada classlari : ile if kosuluna baglayabiliriz
+
+ 18- <app-button :processing="true">Submit</app-button> : ornek :type attr olarak gecilmedigi icin default degerubu propstan almakta

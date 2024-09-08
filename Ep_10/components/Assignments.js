@@ -16,9 +16,9 @@ export default {
     data() {
         return {
             assignments: [
-                {name: 'Finish Project', complete: false, id: 1},
-                {name: 'Read book', complete: false, id: 2},
-                {name: 'Turn in homework', complete: false, id: 3},
+                {name: 'Finish Project', complete: false, id: 1, tag: 'math'},
+                {name: 'Read book', complete: false, id: 2, tag: 'science'},
+                {name: 'Turn in homework', complete: false, id: 3, tag: 'math'},
             ],
         }
     },
@@ -34,10 +34,13 @@ export default {
 
     methods: {
         add(name) {
+            const randomTag = this.assignments[Math.floor(Math.random() * this.assignments.length)].tag;
+            
             this.assignments.unshift({
                 name: name,
                 complete: false,
-                id: this.assignments.length + 1
+                id: this.assignments.length + 1,
+                tag: randomTag
             });
         }
     }

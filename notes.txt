@@ -223,7 +223,7 @@
 
  Episode 9
 
- 28- <assignment-create @add="add"></assignment-create> : componenti olusturduk. ve custom v-on tanimladik
+ 28- <assignment-create @okan="add"></assignment-create> : componenti olusturduk. ve custom v-on tanimladik
 
  29- methods: {
          add(name) {
@@ -237,7 +237,40 @@
 
  30- methods: {
          add() {
-             this.$emit('add', this.newAssignment);
+             this.$emit('okan', this.newAssignment);
              this.newAssignment = '';
          }
-     } : $emit ile fonk adini verip name olarak newAssignment i verdik
+     } : $emit ile dinleyecek event adini verip name olarak newAssignment i verdik
+
+
+ Episode 10
+
+ 31- data() {
+         return {
+             currentTag: 'all'
+         }
+     }, : currentTag defaul olarak all atadik
+
+ 32- computed: {
+         filteredAssignments() {
+             if (this.currentTag === 'all') return this.assignments
+             return this.assignments.filter(a => a.tag === this.currentTag);
+         },
+
+         tags() {
+             return ['all', ...new Set(this.assignments.map(a => a.tag))];
+         }
+     }, : assignment larda donerken kosula bagladik
+
+ 33- <div class="flex gap-2">
+       <button
+           @click="currentTag = tag"
+           v-for="tag in tags"
+           class="border rounded px-1 py-px text-xs"
+           :class="{
+               'border-blue-500 text-blue-500': tag === currentTag
+           }"
+       > {{ tag }}
+       </button>
+     </div> : Taglara donup button value olarak yazdik. Tiklanildiginda mevcut taga donerkeki tagi atadik
+              ve mevcut tag donerken ki tagsa :class larini verdik

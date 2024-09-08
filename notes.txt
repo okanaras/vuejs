@@ -310,3 +310,15 @@
              return ['all', ...new Set(this.initialTags)];
          }
      }  : props ve all + initial taglar
+
+
+ Episode 12
+
+ 37- v-model:currentTag="currentTag" : v-model:name ile istegimiz adla propsu hem de value yu yakalayabiliriz.
+
+ 38- props: {
+         initialTags: Array,
+         currentTag: String
+     }, : v-modal:currentTag propsunu cekiyoruz
+
+ 38- @click="$emit('update:currentTag', tag)" : update:currentTag ile propsu cekip kullaniyoruz

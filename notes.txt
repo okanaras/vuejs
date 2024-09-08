@@ -322,3 +322,34 @@
      }, : v-modal:currentTag propsunu cekiyoruz
 
  38- @click="$emit('update:currentTag', tag)" : update:currentTag ile propsu cekip kullaniyoruz
+
+
+ Episode 13
+
+ 39- npm i json-server --save-dev : ile fake api yi kurduk
+
+ 40- {
+       "assignments": [
+         {
+           "name": "Finish Project",
+           "complete": false,
+           "id": 1,
+           "tag": "math"
+         },...
+       } : db.json icerisine ornek data atadik
+
+ 41- data() {
+         return {
+             assignments: [],
+         }
+     }, : baslangicta bos dizi olarak tanimladik
+
+ 42- created() {
+         fetch('http://localhost:3001/assignments')
+             .then(response => response.json())
+             .then(assignments => {
+                 this.assignments = assignments;
+             });
+     }, : daha sonra created alanina fetch ile cekip assigment a atadik
+
+ 43- npx json-server db.json -p 3001 : ile fake db yi calistirdik

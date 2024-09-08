@@ -219,3 +219,25 @@
             this.newAssignment = '';
         }
      } : butona tiklanildiginda prevent yapip add fonk da assignmenta yeni deger atadik name i newAssignment tan aldik
+
+
+ Episode 9
+
+ 28- <assignment-create @add="add"></assignment-create> : componenti olusturduk. ve custom v-on tanimladik
+
+ 29- methods: {
+         add(name) {
+             this.assignments.unshift({
+                 name: name,
+                 complete: false,
+                 id: this.assignments.length + 1
+             });
+         }
+     } : child a name olarak atadik
+
+ 30- methods: {
+         add() {
+             this.$emit('add', this.newAssignment);
+             this.newAssignment = '';
+         }
+     } : $emit ile fonk adini verip name olarak newAssignment i verdik

@@ -274,3 +274,39 @@
        </button>
      </div> : Taglara donup button value olarak yazdik. Tiklanildiginda mevcut taga donerkeki tagi atadik
               ve mevcut tag donerken ki tagsa :class larini verdik
+
+
+ Episode 11
+
+ 34- <assignment-tags
+         :initial-tags="assignments.map(a=>a.tag)"
+         :current-tag="currentTag"
+         @change="currentTag = $event"
+     /> : component olusturduk ve inital prop u ile taglari, current ile mebcut tag i componente ginderdik.
+          @change ise $emit olarak gonderdik. $event gonderilen tag a karsilik gelmekte
+
+ 35- template: `
+       <div class="flex gap-2">
+         <button
+             @click="$emit('change', tag)"
+             v-for="tag in tags"
+             class="border rounded px-1 py-px text-xs"
+             :class="{
+                   'border-blue-500 text-blue-500': tag === currentTag
+               }"
+         > {{ tag }}
+         </button>
+       </div>
+     `, : ass-tags componenti
+
+ 36- props: {
+         initialTags: Array,
+         currentTag: String
+     },
+
+
+     computed: {
+         tags() {
+             return ['all', ...new Set(this.initialTags)];
+         }
+     }  : props ve all + initial taglar

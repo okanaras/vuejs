@@ -159,3 +159,30 @@
      </button> : Burada classlari : ile if kosuluna baglayabiliriz
 
  18- <app-button :processing="true">Submit</app-button> : ornek :type attr olarak gecilmedigi icin default degerubu propstan almakta
+
+
+ Episode 7
+
+ 19- <script type="module">
+         import App from "./src/components/App.js";
+
+         Vue.createApp(App).mount("#app");
+     </script> : indexte app componetini cagirdik.
+
+ 20- import Assignments from "./Assignments.js";
+
+     export default {
+         components: {Assignments},
+
+         template: `
+           <Assignments/>
+         `,
+     } : burada da assignemnts componentini cagirdik.
+
+ 21- Assignments componentinde listi cagirdik ve liste props gonderdik.
+
+ 22- AssignmentList componentinde assignment componentini cagirdik ve ona da props gonderdik.
+
+ 23- Assignment componentinde ise veriyi bastirdik.
+
+ 24- Propslar ilgili componentte turu belirtilmelidir.

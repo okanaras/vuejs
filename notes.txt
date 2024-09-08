@@ -186,3 +186,36 @@
  23- Assignment componentinde ise veriyi bastirdik.
 
  24- Propslar ilgili componentte turu belirtilmelidir.
+
+
+ Episode 8
+
+ 25- <form @submit.prevent="add">
+         <div class="border border-gray-600 text-black">
+             <input v-model="newAssignment" type="text" placeholder="New assignment..." class="p-2 focus:outline" />
+             <button type="submit" class="bg-gray-300 text-white p-2 border-l hover:bg-gray-400 hover:text-black">Add</button>
+         </div>
+     </form> : form gonderme islemi v-model ile newAssignment a bagladik
+
+ 26- data() {
+         return {
+             assignments: [
+                 {name: 'Finish Project', complete: false, id: 1},
+                 {name: 'Read book', complete: false, id: 2},
+                 {name: 'Turn in homework', complete: false, id: 3},
+             ],
+
+             newAssignment: ''
+         }
+     }, : return icerisnde newAssignment tanimladik ve formda inputa bagladik
+
+ 27- methods: {
+        add() {
+            this.assignments.unshift({
+                name: this.newAssignment,
+                complete: false,
+                id: this.assignments.length + 1
+            });
+            this.newAssignment = '';
+        }
+     } : butona tiklanildiginda prevent yapip add fonk da assignmenta yeni deger atadik name i newAssignment tan aldik

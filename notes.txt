@@ -368,3 +368,18 @@
  : surekli "npx serve" ve "npx serve & npx json-server db.json -p 3001" komutlarini calistirmamak icin package.json a ekledik
 
  45- <slot></slot> : ile istedigimiz contenti yazabiliriz. Assignment, AssignmentList ve AssignmentCreate componentlerine bak
+
+
+ Episode 15
+
+ 46- <footer v-if="$slots.footer" class="border-gray-600 border-t mt-4 pt-4">
+       <slot name="footer"></slot>
+     </footer> : slot acip name veriyoruz. name verilmezse default anlamina gelir.
+
+ 47- v-if="$slots.{slotName}" : slota verilen name ile kontrol ediyoruz
+
+ 48- <panel v-show="assignments.length" class="w-60" id="my-panel">
+         <template #heading>
+           Header is here
+         </template>
+      </panel> : kullanimi ise componenti cagirip icersinde template taglari icerisinde component te verilen name ile eslestiriyoruz.

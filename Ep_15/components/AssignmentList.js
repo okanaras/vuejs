@@ -1,0 +1,60 @@
+import Assignment from "./Assignment.js";
+import AssignmentTags from "./AssignmentTags.js";
+import Panel from "./Panel.js";
+
+export default {
+    components: {Assignment, AssignmentTags, Panel},
+    template: `
+      <panel v-show="assignments.length" class="w-60" id="my-panel">
+        <template #heading>
+          Header is here
+        </template>
+
+        <div class="flex justify-between items-start">
+          <h2 class="font-bold mb-2">
+            {{ title }} ({{ filteredAssignments.length }})
+          </h2>
+
+          <button v-show="canToggle" @click="$emit('toggle')">&times;</button>
+        </div>
+
+        <assignment-tags
+            v-model:currentTag="currentTag"
+            :initial-tags="assignments.map(a=>a.tag)"
+        />
+
+        <ul class="border border-gray-600 divide-y divide-gray-600 mt-6">
+          <assignment :key="assignment.id" v-for="assignment in filteredAssignments" :okan="assignment"></assignment>
+        </ul>
+
+        <slot></slot>
+
+        <template #footer>
+          Footer is here
+        </template>
+      </panel>
+    `,
+
+    props: {
+        "assignments": Array,
+        "title": String,
+        "canToggle": {
+            type: Boolean,
+            default: false
+        }
+    },
+
+    data() {
+        return {
+            currentTag: 'all',
+        }
+    },
+
+    computed: {
+        filteredAssignments() {
+            if (this.currentTag === 'all') return this.assignments
+            return this.assignments.filter(a => a.tag === this.currentTag);
+        },
+    },
+
+}

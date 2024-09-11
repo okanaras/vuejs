@@ -383,3 +383,10 @@
            Header is here
          </template>
       </panel> : kullanimi ise componenti cagirip icersinde template taglari icerisinde component te verilen name ile eslestiriyoruz.
+
+
+ Episode 16
+
+ 49- npm init vue@lates : komutu ile projeyi kuruyoruz. Proje name veriyoruz, ts:no, jsx:no, Vue Router:yes, Pinia:fornowNO, Vitest testing:no, end-to-end test:no, ESLint:yes, Prettier:yes
+
+ 50- cd pr-name, npm i, npm run lint, npm run dev : komutlarini calistiriyoruz

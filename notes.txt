@@ -353,3 +353,18 @@
      }, : daha sonra created alanina fetch ile cekip assigment a atadik
 
  43- npx json-server db.json -p 3001 : ile fake db yi calistirdik
+
+
+ Episode 14
+
+ 44- {
+       "scripts": {
+         "start": "npx serve & npx json-server db.json -p 3001"
+       },
+       "devDependencies": {
+         "json-server": "^1.0.0-beta.2"
+       }
+     }
+ : surekli "npx serve" ve "npx serve & npx json-server db.json -p 3001" komutlarini calistirmamak icin package.json a ekledik
+
+ 45- <slot></slot> : ile istedigimiz contenti yazabiliriz. Assignment, AssignmentList ve AssignmentCreate componentlerine bak

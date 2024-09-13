@@ -390,3 +390,23 @@
  49- npm init vue@lates : komutu ile projeyi kuruyoruz. Proje name veriyoruz, ts:no, jsx:no, Vue Router:yes, Pinia:fornowNO, Vitest testing:no, end-to-end test:no, ESLint:yes, Prettier:yes
 
  50- cd pr-name, npm i, npm run lint, npm run dev : komutlarini calistiriyoruz
+
+
+ Episode 17
+
+ 51- {
+       "compilerOptions": {
+         "paths": {
+           "@/*": ["./src/*"]
+         }
+       },
+       "exclude": ["node_modules", "dist"]
+     } : projede egerki jsconfig.json dosyasi yoksa olustur ve bu kodlari yapistir. Amac ise @ alias i ile direkt src nin altini gormek
+
+ 52- <RouterLink to="/">Home</RouterLink> : router link ler sayfa yenilenmeden getirilmesini saglar. href alanini to yapiyoruz
+
+ 53- Bunun icin <RouterView/> componentini cagirmak gerek. Bu component sayesinde hangi sayfadaysa onun componenti cagirliyor
+
+ 54- <TheWelcome /> || <the-welcome /> : seklinde de componentler kullanabilinir. Common ise ilk sekil
+
+

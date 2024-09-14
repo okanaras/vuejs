@@ -1,10 +1,8 @@
-<!--options api-->
 <script setup>
 
-import {useFlash} from "@/composables/useFlash.js";
-import {counter} from "../stores/counterStore.js";
+import {useCounterStore} from "@/stores/CounterStore.js";
 
-let {flash} = useFlash();
+let counter = useCounterStore();
 
 </script>
 

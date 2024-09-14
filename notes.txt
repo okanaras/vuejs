@@ -627,7 +627,7 @@
      }); : counterStore olusturduk.
 
  79- <script setup>
-     import {counter} from "@/stores/counterStore.js";
+     import {counter} from "@/stores/CounterStore.js";
      </script>
 
      <template>
@@ -638,6 +638,78 @@
          <button @click="counter.decrement()">Decrement</button>
        </div>
      </template> : counterview componenti olustrup onu app.vue/nav a kaydettik daha sonra router da routunu verdik
+
+
+ Episode 25
+
+ 80- npm i pinia : ile paketi kurduk
+
+ 81- import './assets/main.css';
+     import {createApp} from 'vue';
+     import {createPinia} from "pinia";
+     import App from './App.vue';
+     import router from './router';
+
+     const app = createApp(App);
+
+     app.use(router);
+     app.use(createPinia());
+
+     app.mount('#app'); : main js e import ettik ve app.use(createPinia()); seklinde duzenledik
+
+ 82- import {defineStore} from "pinia";
+
+     export let useCounterStore = defineStore('counter', {
+         // data
+         state() {
+             return {
+                 count: 5
+             };
+         },
+
+         //methods
+         actions: {
+             increment() {
+                 if (this.count < 10) {
+                     this.count++;
+                 } else {
+                     alert('max 10 adet girebilirsiniz.')
+                 }
+             },
+             decrement() {
+                 if (this.count > 0) {
+                     this.count--;
+                 }
+             }
+         },
+
+         //computed
+         getters: {
+             remaining(state) {
+                 return 10 - state.count;
+             }
+         }
+     }); : pinia store icin kullanimi
+
+ 83- <script setup>
+     import {useCounterStore} from "@/stores/CounterStore.js";
+
+     let counter = useCounterStore();
+     </script>
+
+     <template>
+       <div>
+         <h1>{{ counter.count }}</h1>
+
+         <button
+             :disabled="! counter.remaining"
+             @click="counter.increment()"
+         > Increment ({{ counter.remaining }} Remaining)
+         </button>
+
+         <button @click="counter.decrement()">Decrement</button>
+       </div>
+     </template> : view de kullanimi
 
 
 

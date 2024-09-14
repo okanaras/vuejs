@@ -587,3 +587,15 @@
  75- Yapilan islem provide ve inject ile dependency injection islemini gerceklestirmek. Surekli her componente prop olarak almamak
 
 
+ Episode 23
+
+ 76- import {reactive} from "vue";
+
+     export let state = reactive({
+         name: 'My Second Quiz',
+         questions: []
+     }); : reactive({}) ozellikle objeler icin ref() gibi kullanilir.
+
+ 77- Bu durumda provide inject gibi kullanilabilinir bu yol
+
+

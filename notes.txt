@@ -568,3 +568,22 @@
      </template> : ornek prop emit kullanimi
 
 
+ Episode 22
+
+ 72- <Quiz :quiz="{name: 'First Quiz', questions:[] }"/> : quiz componentine prop olarak quiz gonderdik.
+
+ 73- import {provide} from "vue";
+
+     let props = defineProps({quiz: Object});
+
+     provide('quiz', props.quiz); : provide ile quiz i proptan okuyup tanimlattik
+
+ 74- import {inject} from "vue";
+
+     let quiz = inject('quiz');
+
+     <h5>{{ quiz.name }}</h5> : inject ile quiz i aldik ve name degerine eristik.
+
+ 75- Yapilan islem provide ve inject ile dependency injection islemini gerceklestirmek. Surekli her componente prop olarak almamak
+
+

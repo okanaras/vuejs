@@ -599,3 +599,45 @@
  77- Bu durumda provide inject gibi kullanilabilinir bu yol
 
 
+ Episode 24
+
+ 78- import {reactive} from "vue";
+
+     export let counter = reactive({
+         // state
+         count: 0,
+
+
+         // actions
+         increment() {
+             if (this.count >= 10) {
+                 alert('max 10 adet girebilirsin');
+                 return;
+             }
+             this.count++;
+         },
+
+         decrement() {
+             if (this.count < 1) {
+                 alert('min 1 adet girmelisiniz');
+                 return;
+             }
+             this.count--;
+         }
+     }); : counterStore olusturduk.
+
+ 79- <script setup>
+     import {counter} from "@/stores/counterStore.js";
+     </script>
+
+     <template>
+       <div>
+         <h1>{{ counter.count }}</h1>
+
+         <button @click="counter.increment()">Increment</button>
+         <button @click="counter.decrement()">Decrement</button>
+       </div>
+     </template> : counterview componenti olustrup onu app.vue/nav a kaydettik daha sonra router da routunu verdik
+
+
+

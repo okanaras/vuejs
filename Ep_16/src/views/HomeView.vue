@@ -1,4 +1,3 @@
-<!--options api-->
 <script setup>
 
 import Quiz from "@/components/Quiz/Quiz.vue";

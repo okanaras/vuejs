@@ -451,3 +451,73 @@
  59- ref gibi lerini import edip kullanmaktansa $ref seklinde de kullanabiliriz. $emit() gibi *bende calismadi bu son 2 si
 
 
+ Episode 19
+
+ 60- npm i sweetalert --save-dev : ile paketi kurduk
+
+ 61- src/composables/useFlash.js : composables ad standarti useName.js seklinde. dosyayi olusturduk
+
+ 62- import swal from "sweetalert";
+
+     export function useFlash() {
+         function flash(title, message, level = "success") {
+             return swal(title, message, level);
+         }
+
+         return {flash};
+     } : export fn dosyaAdi, barinacak fonksiyonlar ve son olarak return obje seklinde dondurduk
+
+ 63- <script setup>
+
+     import {useFlash} from "@/composables/useFlash.js";
+
+     let {flash} = useFlash();
+
+     </script> : setup ta bu sekilde import edip degiskene atayip kullanabilir halde.\
+
+ 64- <button @click="flash('ABOUT','It Works on the about page','info')">Click Me</button> : son olarak cagirdik ilgili fonksiyonu
+
+
+ Episode 20
+
+ 65- useStorage composables ini olusturup home view dan local storage a veri depolattik
+
+ 66- import {useStorage} from "@/composables/useStorage.js";
+
+     let food = useStorage('food'); :
+
+     <p>
+       What is your favorite food ? <input v-model="food" type="text">
+     </p> : import edip v model ile bagliyoruz ve yazilan fonk gore cagiriyoruz
+
+ 67- import {ref, watch} from "vue";
+
+     export function useStorage(key, val = null) {
+         let storedVal = read();
+
+         if (storedVal) {
+             val = ref(storedVal);
+         } else {
+             val = ref(val);
+             write();
+         }
+
+
+         watch(val, write, {deep: true});
+
+         function read() {
+             return JSON.parse(localStorage.getItem(key));
+         }
+
+         function write() {
+             if (val.value === null || val.value === '') {
+                 localStorage.removeItem(key)
+             } else {
+                 localStorage.setItem(key, JSON.stringify(val.value));
+             }
+         }
+
+         return val;
+     } : ornek useStorage kodu
+
+

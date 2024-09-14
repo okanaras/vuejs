@@ -1,9 +1,20 @@
 <!--options api-->
 <script setup>
 
-import {useFlash} from "@/composables/useFlash.js";
+import {useStorage} from "@/composables/useStorage.js";
 
-let {flash} = useFlash();
+let food = useStorage('food');
+let age = useStorage('age');
+
+let obj = useStorage('cars', {
+  mercedes: 'cls',
+  audi: 'q7',
+  honda: 'civic'
+});
+
+setTimeout(() => {
+  obj.value.audi = 'q4';
+}, 3000);
 
 </script>
 
@@ -11,7 +22,11 @@ let {flash} = useFlash();
 <template>
   <main>
     <p>
-      <button @click="flash('HOME','It Works on the home page')">Click Me</button>
+      What is your favorite food ? <input v-model="food" type="text">
+    </p>
+
+    <p>
+      How old are you ? <input v-model="age" type="text">
     </p>
   </main>
 </template>
